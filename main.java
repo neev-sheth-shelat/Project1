@@ -24,7 +24,7 @@ public class main{
             password = (int) (Math.random() * 100000000) + "";
             for(int i = 0; i < password.length(); i++){
                 String character = password.substring(i, i+1) + "";
-                if(character.equals("0")){
+                if(character.equals("0") || character.equals("1")){
                     password = password.substring(0, i) + "o" + password.substring(i + 1);
                 }
             }
@@ -61,6 +61,8 @@ public class main{
         // Create a bank object with the user input
         bank userBank = new bank(accountNumber, accountHolderName, password, startingBalance, monthlyIncome, monthlyRentExpense, monthlyFoodExpense, monthlyUtilityExpense, monthlyTransportationExpense, monthlyEntertainmentExpense, monthlyOtherExpense);
 
+
+        //check if the user wants to change any of the information they entered
         System.out.println("Does your account information look correct? (yes/no)");
         System.out.println("Account Holder Name: " + userBank.getAccountHolderName());
         System.out.println("Account Number: " + userBank.getAccountNumber());
@@ -74,31 +76,34 @@ public class main{
         System.out.println("Monthly Entertainment Expense: " + userBank.getMonthlyEntertainmentExpense());
         System.out.println("Monthly Other Expense: " + userBank.getMonthlyOtherExpense());
         System.out.println("Monthly Savings: " + userBank.getMonthlySavings());
-        String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("no")) {
+
+        scanner.nextLine();
+        String answer2 = scanner.nextLine();
+
+        if (answer2.equalsIgnoreCase("no")) {
             System.out.println("Please restart the program and enter the correct information.");
             System.exit(0);
         }
-        
+
         else {
             System.out.println("Great! Let's continue.");
         }
 
-        //userBank.consultationRent();
+        // Check if the user wants to change any of the expenses
         if (userBank.consultationRent()){
             System.out.println("What would you like to change your rent expense to?");
             double newRentExpense = scanner.nextDouble();
             userBank.setMonthlyRentExpense(newRentExpense);
         }
 
-        //userBank.consultationFood();
+      
         if (userBank.consultationFood()){
             System.out.println("What would you like to change your food expense to?");
             double newFoodExpense = scanner.nextDouble();
             userBank.setMonthlyFoodExpense(newFoodExpense);
         }
 
-        //userBank.consultationUtility();
+        
         if (userBank.consultationUtility()){
             System.out.println("What would you like to change your utility expense to?");
             double newUtilityExpense = scanner.nextDouble();
@@ -185,7 +190,7 @@ class bank{
 
     // Method for withdrawing money from the account
     public double withdraw(double amount){
-        if(this.balance >= amount){
+        if(amount > 0 && this.balance >= amount){
             this.balance -= amount;
             return this.balance;
         } else {
