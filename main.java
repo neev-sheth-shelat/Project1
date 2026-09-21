@@ -349,9 +349,14 @@ public class main{
         }
         int month = 1;
         double totalSavings = 0;
-        System.out.println("Savings: " + userBank.getMonthlySavings() + ", Savings Rate: " + userBank.SavingsRate());
+        double monthlySavings = userBank.getMonthlySavings();
+        System.out.println("Usual Savings: " + monthlySavings + ", Savings Rate: " + userBank.SavingsRate());
         while(month <= 12){
-            totalSavings += userBank.getMonthlySavings();
+            if(Math.random() < 0.2){
+                System.out.println("You have goten a bonus this month! Your savings will be increased by 10%.");
+                monthlySavings *= 1.1;
+            }
+            totalSavings += monthlySavings;
             System.out.println("Month " + month +  ", Total Savings: " + totalSavings);
             month++;
         }
