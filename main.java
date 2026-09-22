@@ -323,18 +323,6 @@ public class main{
                 // }
             }
 
-            else if(choice == 3){
-                System.out.println("Your current balance is: " + userBank.getBalance());
-                System.out.println("______________________________________________________________");
-                // int month = 1;
-                // double totalSavings = 0;
-                // while(month <= 12){
-                //     totalSavings += userBank.getMonthlySavings();
-                //     System.out.println("Month " + month + ": " + "Savings: " + userBank.getMonthlySavings() + ", Savings Rate: " + userBank.SavingsRate() + ", Total Savings: " + totalSavings);
-                //     month++;
-                // }
-            }
-
            
 
             else if(choice == 4){
