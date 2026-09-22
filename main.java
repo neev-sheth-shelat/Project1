@@ -34,36 +34,36 @@ public class main{
       
 
         System.out.println("Please enter your starting balance in only digits: ");
-        String StartingBalance = scanner.nextLine();
-        double startingBalance = Double.parseDouble(StartingBalance.replaceAll("[^0-9.]", ""));
+        String startingBalance1 = scanner.nextLine();
+        double startingBalance = Double.parseDouble(startingBalance1.replaceAll("[^0-9.]", ""));
 
         System.out.println("Please enter your monthly income in only digits:");
-        String MonthlyIncome = scanner.nextLine();
-        double monthlyIncome = Double.parseDouble(MonthlyIncome.replaceAll("[^0-9.]", ""));
+        String monthlyIncome1 = scanner.nextLine();
+        double monthlyIncome = Double.parseDouble(monthlyIncome1.replaceAll("[^0-9.]", ""));
 
         System.out.println("Please enter your monthly rent expense in only digits:");
-        String MonthlyRentExpense = scanner.nextLine();
-        double monthlyRentExpense = Double.parseDouble(MonthlyRentExpense.replaceAll("[^0-9.]", ""));
+        String monthlyRentExpense1 = scanner.nextLine();
+        double monthlyRentExpense = Double.parseDouble(monthlyRentExpense1.replaceAll("[^0-9.]", ""));
 
         System.out.println("Please enter your monthly food expense in only digits:");
-        String MonthlyFoodExpense = scanner.nextLine();
-        double monthlyFoodExpense = Double.parseDouble(MonthlyFoodExpense.replaceAll("[^0-9.]", ""));
+        String monthlyFoodExpense1 = scanner.nextLine();
+        double monthlyFoodExpense = Double.parseDouble(monthlyFoodExpense1.replaceAll("[^0-9.]", ""));
 
         System.out.println("Please enter your monthly utility expense in only digits:");
-        String MonthlyUtilityExpense = scanner.nextLine();
-        double monthlyUtilityExpense = Double.parseDouble(MonthlyUtilityExpense.replaceAll("[^0-9.]", ""));
+        String monthlyUtilityExpense1 = scanner.nextLine();
+        double monthlyUtilityExpense = Double.parseDouble(monthlyUtilityExpense1.replaceAll("[^0-9.]", ""));
 
         System.out.println("Please enter your monthly transportation expense in only digits:");
-        String MonthlyTransportationExpense = scanner.nextLine();
-        double monthlyTransportationExpense = Double.parseDouble(MonthlyTransportationExpense.replaceAll("[^0-9.]", ""));
+        String monthlyTransportationExpense1 = scanner.nextLine();
+        double monthlyTransportationExpense = Double.parseDouble(monthlyTransportationExpense1.replaceAll("[^0-9.]", ""));
 
         System.out.println("Please enter your monthly entertainment expense in only digits:");
-        String MonthlyEntertainmentExpense = scanner.nextLine();
-        double monthlyEntertainmentExpense = Double.parseDouble(MonthlyEntertainmentExpense.replaceAll("[^0-9.]", ""));
+        String monthlyEntertainmentExpense1 = scanner.nextLine();
+        double monthlyEntertainmentExpense = Double.parseDouble(monthlyEntertainmentExpense1.replaceAll("[^0-9.]", ""));
 
         System.out.println("Please enter your monthly other expense in only digits:");
-        String MonthlyOtherExpense = scanner.nextLine();
-        double monthlyOtherExpense = Double.parseDouble(MonthlyOtherExpense.replaceAll("[^0-9.]", ""));
+        String monthlyOtherExpense1 = scanner.nextLine();
+        double monthlyOtherExpense = Double.parseDouble(monthlyOtherExpense1.replaceAll("[^0-9.]", ""));
 
         // Create a bank object with the user input
         bank userBank = new bank(accountNumber, accountHolderName, password, startingBalance, monthlyIncome, monthlyRentExpense, monthlyFoodExpense, monthlyUtilityExpense, monthlyTransportationExpense, monthlyEntertainmentExpense, monthlyOtherExpense);
@@ -286,14 +286,7 @@ public class main{
                 double depositAmount = scanner.nextDouble();
                 userBank.deposit(depositAmount);
                 System.out.println("Your new balance is: " + userBank.getBalance());
-                // System.out.println("______________________________________________________________");
-                // int month = 1;
-                // double totalSavings = 0;
-                // while(month <= 12){
-                //     totalSavings += userBank.getMonthlySavings();
-                //     System.out.println("Month " + month + ": " + "Savings: " + userBank.getMonthlySavings() + ", Savings Rate: " + userBank.SavingsRate() + ", Total Savings: " + totalSavings);
-                //     month++;
-                // }
+               
             }
 
             else if(choice == 2){
@@ -302,25 +295,13 @@ public class main{
                 userBank.withdraw(withdrawAmount);
                 System.out.println("Your new balance is: " + userBank.getBalance());
                 System.out.println("______________________________________________________________");
-                // int month = 1;
-                // double totalSavings = 0;
-                // while(month <= 12){
-                //     totalSavings += userBank.getMonthlySavings();
-                //     System.out.println("Month " + month + ": " + "Savings: " + userBank.getMonthlySavings() + ", Savings Rate: " + userBank.SavingsRate() + ", Total Savings: " + totalSavings);
-                //     month++;
-                // }
+               
             }
 
             else if(choice == 3){
                 System.out.println("Your current balance is: " + userBank.getBalance());
                 System.out.println("______________________________________________________________");
-                // int month = 1;
-                // double totalSavings = 0;
-                // while(month <= 12){
-                //     totalSavings += userBank.getMonthlySavings();
-                //     System.out.println("Month " + month + ": " + "Savings: " + userBank.getMonthlySavings() + ", Savings Rate: " + userBank.SavingsRate() + ", Total Savings: " + totalSavings);
-                //     month++;
-                // }
+               
             }
 
            
