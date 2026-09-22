@@ -571,3 +571,19 @@ class Bank{
     }
 
 }
+// Wendy Wang
+// The set up and the services was easy to understand and use.
+// Very simple, just place the instriction closer to the input. Other then that very good. Place edge case in for digits.
+
+
+//Connor Doherty
+//make it clear that answers other than 'yes' or 'no' default to 'no'
+//catch exception of multiple periods in an input number being accepted
+//it looks like rent expense doesn't change after the user provides input
+
+
+
+/*Krish Sharma
+   - I like the clean layout of the code and the use of methods to organize the different functionalities.
+   - Ensure all user inputs are validated before processing
+*/
