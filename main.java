@@ -66,7 +66,7 @@ public class main{
         double monthlyOtherExpense = Double.parseDouble(monthlyOtherExpense1.replaceAll("[^0-9.]", ""));
 
         // Create a bank object with the user input
-        bank userBank = new bank(accountNumber, accountHolderName, password, startingBalance, monthlyIncome, monthlyRentExpense, monthlyFoodExpense, monthlyUtilityExpense, monthlyTransportationExpense, monthlyEntertainmentExpense, monthlyOtherExpense);
+        Bank userBank = new Bank(accountNumber, accountHolderName, password, startingBalance, monthlyIncome, monthlyRentExpense, monthlyFoodExpense, monthlyUtilityExpense, monthlyTransportationExpense, monthlyEntertainmentExpense, monthlyOtherExpense);
 
 
         //check if the user wants to change any of the information they entered
@@ -319,10 +319,10 @@ public class main{
         int month = 1;
         double totalSavings = 0;
         double monthlySavings = userBank.getMonthlySavings();
-        System.out.println("Usual Savings: " + monthlySavings + ", Savings Rate: " + userBank.SavingsRate());
+        System.out.println("Usual Savings: " + monthlySavings + ", Savings Rate: " + userBank.savingsRate());
         while(month <= 12){
             if(Math.random() < 0.2){
-                System.out.println("You have goten a bonus this month! Your savings will be increased by 10%.");
+                System.out.println("You have gotten a bonus this month! Your savings will be increased by 10%.");
                 monthlySavings *= 1.1;
             }
             totalSavings += monthlySavings;
@@ -335,7 +335,7 @@ public class main{
     }
 }
 
-class bank{
+class Bank{
     // Attributes
     private String accountHolderName;
     private int accountNumber;
@@ -351,7 +351,7 @@ class bank{
     private double monthlyOtherExpense;
 
     // No param constructor
-    public bank(){
+    public Bank(){
         this.balance = 0;
         this.monthlyIncome = 0;
         this.monthlyRentExpense = 0;
@@ -364,7 +364,7 @@ class bank{
     }
 
     // Param constructor
-    public bank(int accountNumber, String accountHolderName, String password, double balance, double monthlyIncome, double monthlyRentExpense, double monthlyFoodExpense, double monthlyUtilityExpense, double monthlyTransportationExpense, double monthlyEntertainmentExpense, double monthlyOtherExpense) {
+    public Bank(int accountNumber, String accountHolderName, String password, double balance, double monthlyIncome, double monthlyRentExpense, double monthlyFoodExpense, double monthlyUtilityExpense, double monthlyTransportationExpense, double monthlyEntertainmentExpense, double monthlyOtherExpense) {
         this.accountNumber = accountNumber;
         this.accountHolderName = accountHolderName;
         this.password = password;
@@ -565,7 +565,7 @@ class bank{
 
     //xtra methods
 
-    public String SavingsRate(){
+    public String savingsRate(){
         double savingsRate = (this.monthlySavings / this.monthlyIncome) * 100;
         return "Your savings rate is: " + savingsRate + "%";
     }
