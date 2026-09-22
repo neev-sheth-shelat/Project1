@@ -286,7 +286,6 @@ public class main{
                 double depositAmount = scanner.nextDouble();
                 userBank.deposit(depositAmount);
                 System.out.println("Your new balance is: " + userBank.getBalance());
-                System.out.println("______________________________________________________________");
                
             }
 
