@@ -326,7 +326,7 @@ public class main{
                 monthlySavings *= 1.1;
             }
             totalSavings += monthlySavings;
-            System.out.println("Month " + month +  ", Total Savings: " + totalSavings);
+            System.out.printf("Month %2d | Total Savings: $%.2f%n", month, totalSavings);
             month++;
         }
 
