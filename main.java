@@ -320,7 +320,7 @@ public class main{
             System.out.println("3. Check balance");
             System.out.println("4. Exit");
 
-           String choiceInput = scanner.nextLine();
+            String choiceInput = scanner.nextLine();
             while (!choiceInput.matches("[0-9]+")) {
                 System.out.println("Invalid input. Please enter a number (1-4).");
                 choiceInput = scanner.nextLine();
@@ -378,7 +378,7 @@ public class main{
             System.out.printf("Month %2d | Total Savings: $%.2f%n", month, totalSavings);
             month++;
         }
-        double bonusRate = (double) bonusMonths / month * 100;
+        double bonusRate = (double) bonusMonths / 12 * 100;
         System.out.printf("You received a bonus in %.1f%% of months.%n", bonusRate);
 
 
