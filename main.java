@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class main{
+public class Main{
     public static void main(String[] args) {
 
         // Create a Scanner object for user input
@@ -364,6 +364,82 @@ public class main{
 
 
         System.out.println("Thank you for using the bank account management system!");
+
+        //New Stuff
+        int accountNumber2 = (int) (Math.random() * 1000000);
+
+        System.out.println("Please enter your starting balance in only digits: ");
+
+        String startingBalanceNew = scanner.nextLine();
+        while(!startingBalanceNew.matches(".*[0-9].*")) {
+            System.out.println("Invalid input. Please enter a valid starting balance.");
+            startingBalanceNew = scanner.nextLine();
+        }
+        //double startingBalance = Double.parseDouble(startingBalance1.replaceAll("[^0-9.]", ""));
+
+        System.out.println("Please enter your monthly income in only digits:");
+        String monthlyIncomeNew = scanner.nextLine();
+        while(!monthlyIncomeNew.matches(".*[0-9].*")) {
+            System.out.println("Invalid input. Please enter a valid monthly income.");
+            monthlyIncome1 = scanner.nextLine();
+        }
+        //double monthlyIncome = Double.parseDouble(monthlyIncome1.replaceAll("[^0-9.]", ""));
+
+        System.out.println("Please enter your monthly rent expense in only digits:");
+        String monthlyRentExpenseNew = scanner.nextLine();
+        while(!monthlyRentExpenseNew.matches(".*[0-9].*")) {
+            System.out.println("Invalid input. Please enter a valid monthly rent expense.");
+            monthlyRentExpenseNew = scanner.nextLine();
+        }
+        //double monthlyRentExpense = Double.parseDouble(monthlyRentExpense1.replaceAll("[^0-9.]", ""));
+
+        System.out.println("Please enter your monthly food expense in only digits:");
+        String monthlyFoodExpenseNew = scanner.nextLine();
+        while(!monthlyFoodExpenseNew.matches(".*[0-9].*")) {
+            System.out.println("Invalid input. Please enter a valid monthly food expense.");
+            monthlyFoodExpenseNew = scanner.nextLine();
+        }
+        //double monthlyFoodExpense = Double.parseDouble(monthlyFoodExpense1.replaceAll("[^0-9.]", ""));
+
+        System.out.println("Please enter your monthly utility expense in only digits:");
+        String monthlyUtilityExpenseNew = scanner.nextLine();
+        while(!monthlyUtilityExpenseNew.matches(".*[0-9].*")) {
+            System.out.println("Invalid input. Please enter a valid monthly utility expense.");
+            monthlyUtilityExpenseNew = scanner.nextLine();
+        }
+        //double monthlyUtilityExpense = Double.parseDouble(monthlyUtilityExpense1.replaceAll("[^0-9.]", ""));
+
+        System.out.println("Please enter your monthly transportation expense in only digits:");
+        String monthlyTransportationExpenseNew = scanner.nextLine();
+        while(!monthlyTransportationExpenseNew.matches(".*[0-9].*")) {
+            System.out.println("Invalid input. Please enter a valid monthly transportation expense.");
+            monthlyTransportationExpenseNew = scanner.nextLine();
+        }
+        //double monthlyTransportationExpense = Double.parseDouble(monthlyTransportationExpense1.replaceAll("[^0-9.]", ""));
+
+        System.out.println("Please enter your monthly entertainment expense in only digits:");
+        String monthlyEntertainmentExpenseNew = scanner.nextLine();
+        while(!monthlyEntertainmentExpenseNew.matches(".*[0-9].*")) {
+            System.out.println("Invalid input. Please enter a valid monthly entertainment expense.");
+            monthlyEntertainmentExpenseNew = scanner.nextLine();
+        }
+        //double monthlyEntertainmentExpense = Double.parseDouble(monthlyEntertainmentExpense1.replaceAll("[^0-9.]", ""));
+
+        System.out.println("Please enter your monthly other expense in only digits:");
+        String monthlyOtherExpenseNew = scanner.nextLine();
+        while(!monthlyOtherExpenseNew.matches(".*[0-9].*")) {
+            System.out.println("Invalid input. Please enter a valid monthly other expense.");
+            monthlyOtherExpenseNew = scanner.nextLine();
+        }
+        //double monthlyOtherExpense = Double.parseDouble(monthlyOtherExpense1.replaceAll("[^0-9.]", ""));
+
+        // Create a bank object with the user input
+        //fix this so it holds new values
+        Bank userBankNew = new Bank(accountNumber, accountHolderName, password, startingBalance, monthlyIncomeNew, monthlyRentExpenseNew, monthlyFoodExpenseNew, monthlyUtilityExpenseNew, monthlyTransportationExpenseNew, monthlyEntertainmentExpenseNew, monthlyOtherExpenseNew);
+
+
+        Finance finance = new Finance(accountHolderName);
+        finance.addAccount(userBank);
     }
 }
 
