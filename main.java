@@ -105,7 +105,7 @@ public class Main{
         System.out.println("Does your account information look correct? (yes/no)");
         System.out.println("Account Holder Name: " + userBank.getAccountHolderName());
         System.out.println("Account Number: " + userBank.getAccountNumber());
-        System.out.println("Password: ********");   // never print the real password
+        System.out.println("Password: " + password);   
         System.out.println("Balance: " + userBank.getBalance());
         System.out.println("Monthly Income: " + userBank.getMonthlyIncome());
         System.out.println("Monthly Rent Expense: " + userBank.getMonthlyRentExpense());
@@ -394,6 +394,152 @@ public class Main{
 
 
         System.out.println("Thank you for using the bank account management system!");
+
+
+          
+        // Units 5-6 extension
+        
+
+        System.out.println("\nFINANCE PORTFOLIO (Units 5-6)");
+
+        // Create a Finance portfolio that will hold Bank accounts
+        Finance myFinance = new Finance(accountHolderName);
+
+        // Add the first bank account (the one the user already created)
+        boolean added = myFinance.addAccount(userBank);
+        if (added) {
+            System.out.println("Your first bank account was successfully added to the portfolio.");
+        } else {
+            System.out.println("Could not add first account - portfolio is full.");
+        }
+
+        // Let the user create a 2nd bank account (same format as first)
+        System.out.println("\nWould you like to add a second bank account to your portfolio? (yes/no)");
+        String addSecond = scanner.nextLine();
+        if (addSecond.equalsIgnoreCase("yes")) {
+            System.out.println("\n--- Creating Second Bank Account ---");
+
+            int accountNumber2 = (int) (Math.random() * 1000000);
+
+            System.out.println("Please enter your starting balance in only digits: ");
+            String startingBalance2 = scanner.nextLine();
+            while (!startingBalance2.matches("\\d*\\.?\\d+") && !startingBalance2.matches("\\d+\\.\\d*")) {
+                System.out.println("Invalid input. Please enter a valid starting balance.");
+                startingBalance2 = scanner.nextLine();
+            }
+            double startingBalanceNew = Double.parseDouble(startingBalance2);
+
+            System.out.println("Please enter your monthly income in only digits:");
+            String monthlyIncome2 = scanner.nextLine();
+            while (!monthlyIncome2.matches("\\d*\\.?\\d+") && !monthlyIncome2.matches("\\d+\\.\\d*")) {
+                System.out.println("Invalid input. Please enter a valid monthly income.");
+                monthlyIncome2 = scanner.nextLine();
+            }
+            double monthlyIncomeNew = Double.parseDouble(monthlyIncome2);
+
+            System.out.println("Please enter your monthly rent expense in only digits:");
+            String monthlyRentExpense2 = scanner.nextLine();
+            while (!monthlyRentExpense2.matches("\\d*\\.?\\d+") && !monthlyRentExpense2.matches("\\d+\\.\\d*")) {
+                System.out.println("Invalid input. Please enter a valid monthly rent expense.");
+                monthlyRentExpense2 = scanner.nextLine();
+            }
+            double monthlyRentExpenseNew = Double.parseDouble(monthlyRentExpense2);
+
+            System.out.println("Please enter your monthly food expense in only digits:");
+            String monthlyFoodExpense2 = scanner.nextLine();
+            while (!monthlyFoodExpense2.matches("\\d*\\.?\\d+") && !monthlyFoodExpense2.matches("\\d+\\.\\d*")) {
+                System.out.println("Invalid input. Please enter a valid monthly food expense.");
+                monthlyFoodExpense2 = scanner.nextLine();
+            }
+            double monthlyFoodExpenseNew = Double.parseDouble(monthlyFoodExpense2);
+
+            System.out.println("Please enter your monthly utility expense in only digits:");
+            String monthlyUtilityExpense2 = scanner.nextLine();
+            while (!monthlyUtilityExpense2.matches("\\d*\\.?\\d+") && !monthlyUtilityExpense2.matches("\\d+\\.\\d*")) {
+                System.out.println("Invalid input. Please enter a valid monthly utility expense.");
+                monthlyUtilityExpense2 = scanner.nextLine();
+            }
+            double monthlyUtilityExpenseNew = Double.parseDouble(monthlyUtilityExpense2);
+
+            System.out.println("Please enter your monthly transportation expense in only digits:");
+            String monthlyTransportationExpense2 = scanner.nextLine();
+            while (!monthlyTransportationExpense2.matches("\\d*\\.?\\d+") && !monthlyTransportationExpense2.matches("\\d+\\.\\d*")) {
+                System.out.println("Invalid input. Please enter a valid monthly transportation expense.");
+                monthlyTransportationExpense2 = scanner.nextLine();
+            }
+            double monthlyTransportationExpenseNew = Double.parseDouble(monthlyTransportationExpense2);
+
+            System.out.println("Please enter your monthly entertainment expense in only digits:");
+            String monthlyEntertainmentExpense2 = scanner.nextLine();
+            while (!monthlyEntertainmentExpense2.matches("\\d*\\.?\\d+") && !monthlyEntertainmentExpense2.matches("\\d+\\.\\d*")) {
+                System.out.println("Invalid input. Please enter a valid monthly entertainment expense.");
+                monthlyEntertainmentExpense2 = scanner.nextLine();
+            }
+            double monthlyEntertainmentExpenseNew = Double.parseDouble(monthlyEntertainmentExpense2);
+
+            System.out.println("Please enter your monthly other expense in only digits:");
+            String monthlyOtherExpense2 = scanner.nextLine();
+            while (!monthlyOtherExpense2.matches("\\d*\\.?\\d+") && !monthlyOtherExpense2.matches("\\d+\\.\\d*")) {
+                System.out.println("Invalid input. Please enter a valid monthly other expense.");
+                monthlyOtherExpense2 = scanner.nextLine();
+            }
+            double monthlyOtherExpenseNew = Double.parseDouble(monthlyOtherExpense2);
+
+            // Create the second Bank object with the same constructor style
+            Bank secondBank = new Bank(accountNumber2, accountHolderName + " (Account 2)", password,
+                    startingBalanceNew, monthlyIncomeNew,
+                    monthlyRentExpenseNew, monthlyFoodExpenseNew, monthlyUtilityExpenseNew,
+                    monthlyTransportationExpenseNew, monthlyEntertainmentExpenseNew, monthlyOtherExpenseNew);
+
+            boolean added2 = myFinance.addAccount(secondBank);
+            if (added2) {
+                System.out.println("Second bank account added successfully!");
+            } else {
+                System.out.println("Could not add second account – portfolio is full.");
+            }
+        }
+
+        //  Let the user set their monthly goals
+        System.out.println("\nNow set your monthly savings goals for the next 6 months.");
+        double[] sampleGoals = new double[6];          // created with new Type[size]
+
+        for (int i = 0; i < sampleGoals.length; i++) {
+            System.out.println("Enter savings goal for month " + (i + 1) + ":");
+            String goalStr = scanner.nextLine();
+            while (!goalStr.matches("\\d*\\.?\\d+") && !goalStr.matches("\\d+\\.\\d*")) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                goalStr = scanner.nextLine();
+            }
+            sampleGoals[i] = Double.parseDouble(goalStr);
+            myFinance.setMonthlyGoal(i, sampleGoals[i]);   // store it in the Finance object
+        }
+
+        // Show the user the results of the new class and arrays
+        System.out.println("\n----- Portfolio Summary -----");
+        System.out.println(myFinance.toString());
+        System.out.println("Number of accounts in portfolio: " + myFinance.countAccounts());
+        System.out.println("Highest balance among accounts: $" + myFinance.getHighestBalance());
+        System.out.println("Average monthly savings goal: $" + String.format("%.2f", myFinance.getAverageGoal()));
+        System.out.println("Total Finance portfolios ever created: " + Finance.getPortfoliosCreated());
+
+        // a second Finance object so we can use the this comparison
+        Finance comparisonPortfolio = new Finance("Comparison User");
+        comparisonPortfolio.setMonthlyGoal(0, 300.0);
+        comparisonPortfolio.setMonthlyGoal(1, 320.0);
+        if (myFinance.hasHigherGoals(comparisonPortfolio)) {
+            System.out.println("Your portfolio has higher average goals than the comparison portfolio.");
+        } else {
+            System.out.println("Your portfolio does not have higher average goals than the comparison portfolio.");
+        }
+
+        // Traverse the goals array with a standard for loop and print them
+        System.out.println("\nYour monthly goals:");
+        for (int i = 0; i < sampleGoals.length; i++) {
+            System.out.printf("  Month %d goal: $%.2f%n", (i + 1), sampleGoals[i]);
+        }
+
+        System.out.println("\nThank you for using the bank account management system!");
+        scanner.close();
     }
 }
 
