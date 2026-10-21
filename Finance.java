@@ -127,6 +127,42 @@ public class Finance {
         return this.getAverageGoal() > other.getAverageGoal();
     }
 
+
+
+    
+    /**
+     * Compares the combined monthly savings of all accounts to the goal for one month.
+     * Precondition:  0 <= month < monthlyGoals.length
+     * Postcondition: returns a message stating whether the total savings of every
+     *                account is higher than, lower than, or equal to that month's goal
+     */
+    public String compareSavingsToGoal(int month) {
+        if (month < 0 || month >= this.monthlyGoals.length) {
+            return "Invalid month.";
+        }
+
+        // add up the monthly savings of every non-null account
+        double totalSavings = 0;
+        for (Bank account : this.accounts) {               // enhanced for loop
+            if (account != null) {
+                totalSavings += account.getMonthlySavings();
+            }
+        }
+
+        double goal = this.monthlyGoals[month];
+        if (totalSavings > goal) {
+            return "Your total monthly savings of $" + String.format("%.2f", totalSavings)
+                    + " is higher than your goal of $" + String.format("%.2f", goal) + ".";
+        } else if (totalSavings < goal) {
+            return "Your total monthly savings of $" + String.format("%.2f", totalSavings)
+                    + " is lower than your goal of $" + String.format("%.2f", goal) + ".";
+        } else {
+            return "Your total monthly savings of $" + String.format("%.2f", totalSavings)
+                    + " is exactly equal to your goal of $" + String.format("%.2f", goal) + ".";
+        }
+    }
+
+    
     //  accessors 
     public String getOwnerName() {
         return this.ownerName;
