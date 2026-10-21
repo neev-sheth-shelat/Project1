@@ -177,6 +177,19 @@ public class Finance {
         return total;
     }
 
+    // Finds the largest value in an array.
+    // Precondition: values is not null and has at least one element.
+    // Postcondition: returns the largest value in values.
+    public static double findMax(double[] values) {
+        double max = values[0];
+        for (double v : values) {
+            if (v > max) {
+                max = v;
+            }
+        }
+        return max;
+    }
+
 
     //  accessor to return the owner's name
     public String getOwnerName() {

@@ -1,7 +1,27 @@
-//Finance file is to organize all your bank accounts. 
-//You then set monthly goals to achieve for savings.
-//Then the code checks all the savings you get from all your bank accounts and tells
-//you whether your above or below the goal.
+/*
+ 
+ 
+ Theme: bank account manager (Units 1-4 built the Bank class).
+ 
+ New class: Finance
+ Job: manages a portfolio of Bank accounts plus a savings goal for each month,
+ then compares the user's real monthly savings to those goals.
+ Relationship: Finance holds a Bank[]; addAccount takes a Bank parameter, and
+ compareSavingsToGoal / getTotalBalance read each Bank's data.
+ 
+ Arrays:
+ Bank[] accounts        (objects, created with new Bank[n])
+ double[] monthlyGoals  (primitives, created with new double[n])
+ String[] monthNames    (initializer list, in Main)
+ 
+ Static: portfoliosCreated and MAX_ACCOUNTS are shared by every Finance object;
+ average(double[]) only needs its array parameter.
+ this: this.ownerName = ownerName; this(...) chaining; this.getAverageGoal() > other.getAverageGoal()
+ Algorithms: max, count, average, sum.
+ 
+ My plan: Use this program to create and manange 
+ multiple bank accounts to stay on track with finacial goals.
+ */
 
 
 import java.util.Scanner;
@@ -724,6 +744,7 @@ public class Main{
         System.out.println("Highest balance among accounts: $" + myFinance.getHighestBalance());
         System.out.println("Total balance across accounts: $" + myFinance.getTotalBalance());
         System.out.println("Average monthly savings goal: $" + String.format("%.2f", myFinance.getAverageGoal()));
+        System.out.println("Highest monthly savings goal: $" + String.format("%.2f", Finance.findMax(myFinance.getMonthlyGoals())));
         System.out.println("Total Finance portfolios ever created: " + Finance.getPortfoliosCreated());
 
         // Check if the combined savings of the accounts is higher or lower than the goals
