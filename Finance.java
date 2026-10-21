@@ -1,53 +1,160 @@
+/**
+ * Finance represents a user's overall financial portfolio.
+ * It holds multiple Bank accounts and a set of monthly savings goals.
+ */
 public class Finance {
-    private String ownerName;
-    private static Bank[] accounts;
-    private double[] monthlyGoals;
 
+    // static: counter shared by every Finance object 
     private static int portfoliosCreated = 0;
-    private static final int MAX_ACCOUNTS = 5;
 
-    public Finance(String ownerName, int accounts, int monthlyGoals){
+    // static constant: every Finance object uses the same default account limit
+    public static final int MAX_ACCOUNTS = 5;
+
+    //instance variables 
+    private String ownerName;
+    private Bank[] accounts;          // array of objects of the original class
+    private double[] monthlyGoals;    // savings goal for each of 12 months
+    private int accountCount;         // how many accounts have been added so far
+
+    /**
+     * Full constructor.
+     * Precondition:  numAccounts > 0 and numGoals > 0
+     * Postcondition: a Finance object is created with empty account slots
+     *                and zeroed goal array; portfoliosCreated is increased by 1
+     */
+    public Finance(String ownerName, int numAccounts, int numGoals) {
         this.ownerName = ownerName;
-        this.accounts = new Bank[accounts];
-        this.monthlyGoals = new double[monthlyGoals];
+        this.accounts = new Bank[numAccounts];   
+        this.monthlyGoals = new double[numGoals];
+        this.accountCount = 0;
         portfoliosCreated++;
     }
 
-    public Finance(String ownerName){
-        this(ownerName, MAX_ACCOUNTS, 12);
+    /**
+     * Overloaded constructor that uses the default MAX_ACCOUNTS and 12 goals.
+     * Demonstrates this(...) to call the other constructor.
+     */
+    public Finance(String ownerName) {
+        this(ownerName, MAX_ACCOUNTS, 12);   // this(...) constructor call
     }
 
-    public void addAccount(Bank account){
-        for(int i = 0; i < accounts.length; i++){
-            if(accounts[i] == null){
-                accounts[i] = account;
-                return;
+    /**
+     * Adds a Bank account to the first empty slot.
+     * Precondition: account is not null
+     * Postcondition: returns true if the account was added;
+     *                returns false and leaves the array unchanged if full
+     */
+    public boolean addAccount(Bank account) {
+        for (int i = 0; i < this.accounts.length; i++) {   // standard for loop
+            if (this.accounts[i] == null) {
+                this.accounts[i] = account;
+                this.accountCount++;
+                return true;
             }
         }
+        return false;
     }
-    public double getHighestBalance(){
-        double highestBalance = 0;
-        for(Bank account : accounts){
-            if(account != null){
-                double balance = account.getBalance();
-                if(balance > highestBalance){
-                    highestBalance = balance;
-                }
+
+    /**
+     * Sets the savings goal for a specific month.
+     * Precondition: 0 <= month < monthlyGoals.length and goal >= 0
+     * Postcondition: monthlyGoals[month] equals the given goal
+     */
+    public void setMonthlyGoal(int month, double goal) {
+        if (month >= 0 && month < this.monthlyGoals.length && goal >= 0) {
+            this.monthlyGoals[month] = goal;
+        }
+    }
+
+    /**
+     * Returns the highest balance among all non-null accounts.
+     * Uses an enhanced for loop and null check.
+     */
+    public double getHighestBalance() {
+        double highest = 0;
+        for (Bank account : this.accounts) {               // enhanced for loop
+            if (account != null && account.getBalance() > highest) {
+                highest = account.getBalance();
             }
         }
-        return highestBalance;
+        return highest;
     }
 
-    public static double averageGoals(){
-        double total = 0;
-        for(int i = 0; i < portfoliosCreated; i++){
-            total += accounts[i].getMonthlySavings();
+    
+    //Counts how many accounts currently exist (non-null).
+     
+    public int countAccounts() {
+        int count = 0;
+        for (int i = 0; i < this.accounts.length; i++) {
+            if (this.accounts[i] != null) {
+                count++;
+            }
         }
-        return total / portfoliosCreated;
+        return count;
     }
 
+    /**
+     Calculates the average of the monthly goals array.
+     Static because it only needs the array parameter – no instance data required.
+     */
+    public static double average(double[] values) {
+        if (values == null || values.length == 0) {
+            return 0.0;
+        }
+        double sum = 0;
+        for (double v : values) {                          // enhanced for loop
+            sum += v;
+        }
+        return sum / values.length;
+    }
+
+    
+    //Instance method that uses the static average helper on this object's goals.
+     
+    public double getAverageGoal() {
+        return average(this.monthlyGoals);
+    }
+
+    
+     //Compares this portfolio's average goal to another Finance object.
+    
+     
+    public boolean hasHigherGoals(Finance other) {
+        return this.getAverageGoal() > other.getAverageGoal();
+    }
+
+    //  accessors 
+    public String getOwnerName() {
+        return this.ownerName;
+    }
+
+    public int getAccountCount() {
+        return this.accountCount;
+    }
+
+    public double[] getMonthlyGoals() {
+        return this.monthlyGoals;
+    }
+
+    //  mutator 
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;   // this.name = name style
+    }
+
+    /**
+     Static method: belongs to the class
+    Returns how many Finance portfolios have ever been created.
+     */
     public static int getPortfoliosCreated() {
         return portfoliosCreated;
     }
+
     
+     //Returns a readable summary of the portfolio.
+     
+    public String toString() {
+        return this.ownerName + "'s Finance Portfolio ("
+                + this.accountCount + " accounts, avg goal $"
+                + String.format("%.2f", this.getAverageGoal()) + ")";
+    }
 }
