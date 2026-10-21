@@ -1,7 +1,7 @@
-/**
- * Finance represents a user's overall financial portfolio.
- * It holds multiple Bank accounts and a set of monthly savings goals.
- */
+
+ //Finance represents a user's overall financial portfolio.
+ // It holds multiple Bank accounts and a set of monthly savings goals.
+ 
 public class Finance {
 
     // static: counter shared by every Finance object 
@@ -30,10 +30,10 @@ public class Finance {
         portfoliosCreated++;
     }
 
-    /**
-     * Overloaded constructor that uses the default MAX_ACCOUNTS and 12 goals.
-     * Demonstrates this(...) to call the other constructor.
-     */
+    
+     //Overloaded constructor that uses the default MAX_ACCOUNTS and 12 goals.
+      //Demonstrates this(...) to call the other constructor.
+     
     public Finance(String ownerName) {
         this(ownerName, MAX_ACCOUNTS, 12);   // this(...) constructor call
     }
@@ -66,10 +66,10 @@ public class Finance {
         }
     }
 
-    /**
-     * Returns the highest balance among all non-null accounts.
-     * Uses an enhanced for loop and null check.
-     */
+    
+     //Returns the highest balance among all non-null accounts.
+     //Uses an enhanced for loop and null check.
+     
     public double getHighestBalance() {
         double highest = 0;
         for (Bank account : this.accounts) {               // enhanced for loop
@@ -81,7 +81,10 @@ public class Finance {
     }
 
     
-    //Counts how many accounts currently exist (non-null).
+   
+    // Counts how many accounts currently exist (non-null).
+    //  Precondition: accounts array has been initialized.
+    //  Postcondition: returns the number of non-null Bank objects in the array.
      
     public int countAccounts() {
         int count = 0;
@@ -93,10 +96,10 @@ public class Finance {
         return count;
     }
 
-    /**
-     Calculates the average of the monthly goals array.
-     Static because it only needs the array parameter – no instance data required.
-     */
+   
+     //Calculates the average of the monthly goals array.
+     //Static because it only needs the array parameter – no instance data required.
+    
     public static double average(double[] values) {
         if (values == null || values.length == 0) {
             return 0.0;
@@ -110,6 +113,8 @@ public class Finance {
 
     
     //Instance method that uses the static average helper on this object's goals.
+    //  Precondition: monthlyGoals has been initialized.
+    //  Postcondition: returns the average of all values in monthlyGoals.
      
     public double getAverageGoal() {
         return average(this.monthlyGoals);
@@ -117,8 +122,7 @@ public class Finance {
 
     
      //Compares this portfolio's average goal to another Finance object.
-    
-     
+ 
     public boolean hasHigherGoals(Finance other) {
         return this.getAverageGoal() > other.getAverageGoal();
     }
@@ -141,10 +145,10 @@ public class Finance {
         this.ownerName = ownerName;   // this.name = name style
     }
 
-    /**
-     Static method: belongs to the class
-    Returns how many Finance portfolios have ever been created.
-     */
+   
+     //Static method: belongs to the class
+    //Returns how many Finance portfolios have ever been created.
+   
     public static int getPortfoliosCreated() {
         return portfoliosCreated;
     }

@@ -499,19 +499,24 @@ public class Main{
             }
         }
 
-        //  Let the user set their monthly goals
-        System.out.println("\nNow set your monthly savings goals for the next 6 months.");
-        double[] sampleGoals = new double[6];          // created with new Type[size]
+        // Let the user set their monthly goals
+        // Demonstrates both array creation styles required by the rubric:
+        // 1.initializer list
+        String[] monthNames = {"January", "February", "March", "April", "May", "June"};  // initializer list
 
+        // 2.new Type[size]
+        double[] sampleGoals = new double[6];
+
+        System.out.println("\nNow set your monthly savings goals for the next 6 months.");
         for (int i = 0; i < sampleGoals.length; i++) {
-            System.out.println("Enter savings goal for month " + (i + 1) + ":");
+            System.out.println("Enter savings goal for " + monthNames[i] + ":");
             String goalStr = scanner.nextLine();
             while (!goalStr.matches("\\d*\\.?\\d+") && !goalStr.matches("\\d+\\.\\d*")) {
                 System.out.println("Invalid input. Please enter a valid number.");
                 goalStr = scanner.nextLine();
             }
             sampleGoals[i] = Double.parseDouble(goalStr);
-            myFinance.setMonthlyGoal(i, sampleGoals[i]);   // store it in the Finance object
+            myFinance.setMonthlyGoal(i, sampleGoals[i]);
         }
 
         // Show the user the results of the new class and arrays
@@ -535,7 +540,7 @@ public class Main{
         // Traverse the goals array with a standard for loop and print them
         System.out.println("\nYour monthly goals:");
         for (int i = 0; i < sampleGoals.length; i++) {
-            System.out.printf("  Month %d goal: $%.2f%n", (i + 1), sampleGoals[i]);
+            System.out.printf("  %s goal: $%.2f%n", monthNames[i], sampleGoals[i]);
         }
 
         System.out.println("\nThank you for using the bank account management system!");
