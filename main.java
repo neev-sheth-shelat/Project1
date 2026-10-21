@@ -1,6 +1,20 @@
+//Finance file is to organize all your bank accounts. 
+//You then set monthly goals to achieve for savings.
+//Then the code checks all the savings you get from all your bank accounts and tells
+//you whether your above or below the goal.
+
+
 import java.util.Scanner;
 
 public class Main{
+    private static double readMoney(Scanner scanner) {
+    String s = scanner.next();
+    while (!s.matches("\\d*\\.?\\d+") && !s.matches("\\d+\\.\\d*")) {
+        System.out.println("Invalid input. Please enter a valid amount.");
+        s = scanner.next();
+    }
+    return Double.parseDouble(s);
+    }
     public static void main(String[] args) {
 
         // Create a Scanner object for user input
@@ -102,7 +116,7 @@ public class Main{
 
 
         //check if the user wants to change any of the information they entered
-        System.out.println("Does your account information look correct? (yes/no)");
+        System.out.println("Does your account information look correct? (yes/no), anything else counts as no!");
         System.out.println("Account Holder Name: " + userBank.getAccountHolderName());
         System.out.println("Account Number: " + userBank.getAccountNumber());
         System.out.println("Password: " + password);   
@@ -119,7 +133,7 @@ public class Main{
         
         String answer2 = scanner.nextLine();
 
-        if (answer2.equalsIgnoreCase("no")) {
+        if (!answer2.equalsIgnoreCase("yes")) {
             System.out.println("Please restart the program and enter the correct information.");
             System.exit(0);
         }
@@ -131,7 +145,7 @@ public class Main{
         // Check if the user wants to change any of the expenses
         if (userBank.consultationRent()){
             System.out.println("What would you like to change your rent expense to?");
-            double newRentExpense = scanner.nextDouble();
+            double newRentExpense = readMoney(scanner);
             scanner.nextLine();
             if (newRentExpense > monthlyRentExpense) {
                 System.out.println("Your new rent expense is higher than your previous rent expense. Are you sure you want to change it? (yes/no)");
@@ -143,7 +157,7 @@ public class Main{
                     String answer4 = scanner.nextLine();
                     if (answer4.equalsIgnoreCase("yes")) {
                         System.out.println("What would you like to decrease your rent expense to?");
-                        double decreasedRentExpense = scanner.nextDouble();
+                        double decreasedRentExpense = readMoney(scanner);
                         scanner.nextLine();
                         userBank.setMonthlyRentExpense(decreasedRentExpense);
                     }
@@ -155,7 +169,7 @@ public class Main{
 
         if (userBank.consultationFood()){
             System.out.println("What would you like to change your food expense to?");
-            double newFoodExpense = scanner.nextDouble();
+            double newFoodExpense = readMoney(scanner);
             scanner.nextLine();
             if (newFoodExpense > monthlyFoodExpense) {
                 System.out.println("Your new food expense is higher than your previous food expense. Are you sure you want to change it? (yes/no)");
@@ -167,7 +181,7 @@ public class Main{
                     String answer4 = scanner.nextLine();
                     if (answer4.equalsIgnoreCase("yes")) {
                         System.out.println("What would you like to decrease your food expense to?");
-                        double decreasedFoodExpense = scanner.nextDouble();
+                        double decreasedFoodExpense = readMoney(scanner);
                         scanner.nextLine();
                         userBank.setMonthlyFoodExpense(decreasedFoodExpense);
                     }
@@ -179,7 +193,7 @@ public class Main{
 
         if (userBank.consultationUtility()){
             System.out.println("What would you like to change your utility expense to?");
-            double newUtilityExpense = scanner.nextDouble();
+            double newUtilityExpense = readMoney(scanner);
             scanner.nextLine();
             if (newUtilityExpense > monthlyUtilityExpense) {
                 System.out.println("Your new utility expense is higher than your previous utility expense. Are you sure you want to change it? (yes/no)");
@@ -191,7 +205,7 @@ public class Main{
                     String answer4 = scanner.nextLine();
                     if (answer4.equalsIgnoreCase("yes")) {
                         System.out.println("What would you like to decrease your utility expense to?");
-                        double decreasedUtilityExpense = scanner.nextDouble();
+                        double decreasedUtilityExpense = readMoney(scanner);
                         scanner.nextLine();
                         userBank.setMonthlyUtilityExpense(decreasedUtilityExpense);
                     }
@@ -203,7 +217,7 @@ public class Main{
 
         if (userBank.consultationTransportation()){
             System.out.println("What would you like to change your transportation expense to?");
-            double newTransportationExpense = scanner.nextDouble();
+            double newTransportationExpense = readMoney(scanner);
             scanner.nextLine();
             if (newTransportationExpense > monthlyTransportationExpense) {
                 System.out.println("Your new transportation expense is higher than your previous transportation expense. Are you sure you want to change it? (yes/no)");
@@ -215,7 +229,7 @@ public class Main{
                     String answer4 = scanner.nextLine();
                     if (answer4.equalsIgnoreCase("yes")) {
                         System.out.println("What would you like to decrease your transportation expense to?");
-                        double decreasedTransportationExpense = scanner.nextDouble();
+                        double decreasedTransportationExpense = readMoney(scanner);
                         scanner.nextLine();
                         userBank.setMonthlyTransportationExpense(decreasedTransportationExpense);
                     }
@@ -227,7 +241,7 @@ public class Main{
 
         if (userBank.consultationEntertainment()){
             System.out.println("What would you like to change your entertainment expense to?");
-            double newEntertainmentExpense = scanner.nextDouble();
+            double newEntertainmentExpense = readMoney(scanner);
             scanner.nextLine();
             if (newEntertainmentExpense > monthlyEntertainmentExpense) {
                 System.out.println("Your new entertainment expense is higher than your previous entertainment expense. Are you sure you want to change it? (yes/no)");
@@ -239,7 +253,7 @@ public class Main{
                     String answer4 = scanner.nextLine();
                     if (answer4.equalsIgnoreCase("yes")) {
                         System.out.println("What would you like to decrease your entertainment expense to?");
-                        double decreasedEntertainmentExpense = scanner.nextDouble();
+                        double decreasedEntertainmentExpense = readMoney(scanner);
                         scanner.nextLine();
                         userBank.setMonthlyEntertainmentExpense(decreasedEntertainmentExpense);
                     }
@@ -251,7 +265,7 @@ public class Main{
 
         if (userBank.consultationOther()){
             System.out.println("What would you like to change your other expense to?");
-            double newOtherExpense = scanner.nextDouble();
+            double newOtherExpense = readMoney(scanner);
             scanner.nextLine();
             if (newOtherExpense > monthlyOtherExpense) {
                 System.out.println("Your new other expense is higher than your previous other expense. Are you sure you want to change it? (yes/no)");
@@ -263,7 +277,7 @@ public class Main{
                     String answer4 = scanner.nextLine();
                     if (answer4.equalsIgnoreCase("yes")) {
                         System.out.println("What would you like to decrease your other expense to?");
-                        double decreasedOtherExpense = scanner.nextDouble();
+                        double decreasedOtherExpense = readMoney(scanner);
                         scanner.nextLine();
                         userBank.setMonthlyOtherExpense(decreasedOtherExpense);
                     }
@@ -275,7 +289,7 @@ public class Main{
 
         if (userBank.consultationSavings()){
             System.out.println("What would you like to change your savings to?");
-            double newSavings = scanner.nextDouble();
+            double newSavings = readMoney(scanner);
             scanner.nextLine();
             if (newSavings < userBank.getMonthlySavings()){
                 System.out.println("Your new savings is lower than your previous savings. Are you sure you want to change it? (yes/no)");
@@ -287,7 +301,7 @@ public class Main{
                     String answer4 = scanner.nextLine();
                     if (answer4.equalsIgnoreCase("yes")){
                         System.out.println("What would you like to increase your savings to?");
-                        double increasedSavings = scanner.nextDouble();
+                        double increasedSavings = readMoney(scanner);
                         scanner.nextLine();
                         userBank.setMonthlySavings(increasedSavings);
                     }
@@ -300,7 +314,7 @@ public class Main{
         System.out.println("New Information:");
         System.out.println("Account Holder Name: " + userBank.getAccountHolderName());
         System.out.println("Account Number: " + userBank.getAccountNumber());
-        System.out.println("Password: " + password);   // never print the real password
+        System.out.println("Password: " + password);  
         System.out.println("Balance: " + userBank.getBalance());
         System.out.println("Monthly Income: " + userBank.getMonthlyIncome());
         System.out.println("Monthly Rent Expense: " + userBank.getMonthlyRentExpense());
@@ -393,7 +407,7 @@ public class Main{
         System.out.printf("You received a bonus in %.1f%% of months.%n", bonusRate);
 
 
-        System.out.println("Thank you for using the bank account management system!");
+       
 
 
           
@@ -495,7 +509,7 @@ public class Main{
             // Check if the user wants to change any of the expenses
             if (secondBank.consultationRent()){
                 System.out.println("What would you like to change your rent expense to?");
-                double newRentExpense = scanner.nextDouble();
+                double newRentExpense = readMoney(scanner);
                 scanner.nextLine();
                 if (newRentExpense > monthlyRentExpenseNew) {
                     System.out.println("Your new rent expense is higher than your previous rent expense. Are you sure you want to change it? (yes/no)");
@@ -507,7 +521,7 @@ public class Main{
                         String answer4 = scanner.nextLine();
                         if (answer4.equalsIgnoreCase("yes")) {
                             System.out.println("What would you like to decrease your rent expense to?");
-                            double decreasedRentExpense = scanner.nextDouble();
+                            double decreasedRentExpense = readMoney(scanner);
                             scanner.nextLine();
                             secondBank.setMonthlyRentExpense(decreasedRentExpense);
                         }
@@ -519,7 +533,7 @@ public class Main{
 
             if (secondBank.consultationFood()){
                 System.out.println("What would you like to change your food expense to?");
-                double newFoodExpense = scanner.nextDouble();
+                double newFoodExpense = readMoney(scanner);
                 scanner.nextLine();
                 if (newFoodExpense > monthlyFoodExpenseNew) {
                     System.out.println("Your new food expense is higher than your previous food expense. Are you sure you want to change it? (yes/no)");
@@ -531,7 +545,7 @@ public class Main{
                         String answer4 = scanner.nextLine();
                         if (answer4.equalsIgnoreCase("yes")) {
                             System.out.println("What would you like to decrease your food expense to?");
-                            double decreasedFoodExpense = scanner.nextDouble();
+                            double decreasedFoodExpense = readMoney(scanner);
                             scanner.nextLine();
                             secondBank.setMonthlyFoodExpense(decreasedFoodExpense);
                         }
@@ -543,7 +557,7 @@ public class Main{
 
             if (secondBank.consultationUtility()){
                 System.out.println("What would you like to change your utility expense to?");
-                double newUtilityExpense = scanner.nextDouble();
+                double newUtilityExpense = readMoney(scanner);
                 scanner.nextLine();
                 if (newUtilityExpense > monthlyUtilityExpenseNew) {
                     System.out.println("Your new utility expense is higher than your previous utility expense. Are you sure you want to change it? (yes/no)");
@@ -555,7 +569,7 @@ public class Main{
                         String answer4 = scanner.nextLine();
                         if (answer4.equalsIgnoreCase("yes")) {
                             System.out.println("What would you like to decrease your utility expense to?");
-                            double decreasedUtilityExpense = scanner.nextDouble();
+                            double decreasedUtilityExpense = readMoney(scanner);
                             scanner.nextLine();
                             secondBank.setMonthlyUtilityExpense(decreasedUtilityExpense);
                         }
@@ -567,7 +581,7 @@ public class Main{
 
             if (secondBank.consultationTransportation()){
                 System.out.println("What would you like to change your transportation expense to?");
-                double newTransportationExpense = scanner.nextDouble();
+                double newTransportationExpense = readMoney(scanner);
                 scanner.nextLine();
                 if (newTransportationExpense > monthlyTransportationExpenseNew) {
                     System.out.println("Your new transportation expense is higher than your previous transportation expense. Are you sure you want to change it? (yes/no)");
@@ -579,7 +593,7 @@ public class Main{
                         String answer4 = scanner.nextLine();
                         if (answer4.equalsIgnoreCase("yes")) {
                             System.out.println("What would you like to decrease your transportation expense to?");
-                            double decreasedTransportationExpense = scanner.nextDouble();
+                            double decreasedTransportationExpense = readMoney(scanner);
                             scanner.nextLine();
                             secondBank.setMonthlyTransportationExpense(decreasedTransportationExpense);
                         }
@@ -591,7 +605,7 @@ public class Main{
 
             if (secondBank.consultationEntertainment()){
                 System.out.println("What would you like to change your entertainment expense to?");
-                double newEntertainmentExpense = scanner.nextDouble();
+                double newEntertainmentExpense = readMoney(scanner);
                 scanner.nextLine();
                 if (newEntertainmentExpense > monthlyEntertainmentExpenseNew) {
                     System.out.println("Your new entertainment expense is higher than your previous entertainment expense. Are you sure you want to change it? (yes/no)");
@@ -603,7 +617,7 @@ public class Main{
                         String answer4 = scanner.nextLine();
                         if (answer4.equalsIgnoreCase("yes")) {
                             System.out.println("What would you like to decrease your entertainment expense to?");
-                            double decreasedEntertainmentExpense = scanner.nextDouble();
+                            double decreasedEntertainmentExpense = readMoney(scanner);
                             scanner.nextLine();
                             secondBank.setMonthlyEntertainmentExpense(decreasedEntertainmentExpense);
                         }
@@ -615,7 +629,7 @@ public class Main{
 
             if (secondBank.consultationOther()){
                 System.out.println("What would you like to change your other expense to?");
-                double newOtherExpense = scanner.nextDouble();
+                double newOtherExpense = readMoney(scanner);
                 scanner.nextLine();
                 if (newOtherExpense > monthlyOtherExpenseNew) {
                     System.out.println("Your new other expense is higher than your previous other expense. Are you sure you want to change it? (yes/no)");
@@ -627,7 +641,7 @@ public class Main{
                         String answer4 = scanner.nextLine();
                         if (answer4.equalsIgnoreCase("yes")) {
                             System.out.println("What would you like to decrease your other expense to?");
-                            double decreasedOtherExpense = scanner.nextDouble();
+                            double decreasedOtherExpense = readMoney(scanner);
                             scanner.nextLine();
                             secondBank.setMonthlyOtherExpense(decreasedOtherExpense);
                         }
@@ -639,7 +653,7 @@ public class Main{
 
             if (secondBank.consultationSavings()){
                 System.out.println("What would you like to change your savings to?");
-                double newSavings = scanner.nextDouble();
+                double newSavings = readMoney(scanner);
                 scanner.nextLine();
                 if (newSavings < secondBank.getMonthlySavings()){
                     System.out.println("Your new savings is lower than your previous savings. Are you sure you want to change it? (yes/no)");
@@ -651,7 +665,7 @@ public class Main{
                         String answer4 = scanner.nextLine();
                         if (answer4.equalsIgnoreCase("yes")){
                             System.out.println("What would you like to increase your savings to?");
-                            double increasedSavings = scanner.nextDouble();
+                            double increasedSavings = readMoney(scanner);
                             scanner.nextLine();
                             secondBank.setMonthlySavings(increasedSavings);
                         }
@@ -664,7 +678,7 @@ public class Main{
             System.out.println("New Information:");
             System.out.println("Account Holder Name: " + secondBank.getAccountHolderName());
             System.out.println("Account Number: " + secondBank.getAccountNumber());
-            System.out.println("Password: " + password);   // never print the real password
+            System.out.println("Password: " + password);  
             System.out.println("Balance: " + secondBank.getBalance());
             System.out.println("Monthly Income: " + secondBank.getMonthlyIncome());
             System.out.println("Monthly Rent Expense: " + secondBank.getMonthlyRentExpense());
@@ -708,6 +722,7 @@ public class Main{
         System.out.println(myFinance.toString());
         System.out.println("Number of accounts in portfolio: " + myFinance.countAccounts());
         System.out.println("Highest balance among accounts: $" + myFinance.getHighestBalance());
+        System.out.println("Total balance across accounts: $" + myFinance.getTotalBalance());
         System.out.println("Average monthly savings goal: $" + String.format("%.2f", myFinance.getAverageGoal()));
         System.out.println("Total Finance portfolios ever created: " + Finance.getPortfoliosCreated());
 
@@ -984,6 +999,7 @@ class Bank{
     //xtra methods
 
     public String savingsRate(){
+        if (this.monthlyIncome == 0) { return "Your savings rate is: 0%"; }
         double savingsRate = (this.monthlySavings / this.monthlyIncome) * 100;
         return "Your savings rate is: " + savingsRate + "%";
     }

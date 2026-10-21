@@ -13,7 +13,7 @@ public class Finance {
     //instance variables 
     private String ownerName;
     private Bank[] accounts;          // array of objects of the original class
-    private double[] monthlyGoals;    // savings goal for each of 12 months
+    private double[] monthlyGoals;    // savings goal for 6 months
     private int accountCount;         // how many accounts have been added so far
 
     /**
@@ -31,11 +31,11 @@ public class Finance {
     }
 
     
-     //Overloaded constructor that uses the default MAX_ACCOUNTS and 12 goals.
+     //Overloaded constructor that uses the default MAX_ACCOUNTS and 6 goals.
       //Demonstrates this(...) to call the other constructor.
      
     public Finance(String ownerName) {
-        this(ownerName, MAX_ACCOUNTS, 12);   // this(...) constructor call
+        this(ownerName, MAX_ACCOUNTS, 6);   // this(...) constructor call
     }
 
     /**
@@ -71,12 +71,14 @@ public class Finance {
      //Uses an enhanced for loop and null check.
      
     public double getHighestBalance() {
-        double highest = 0;
+        double highest = Double.NEGATIVE_INFINITY;
+
         for (Bank account : this.accounts) {               // enhanced for loop
             if (account != null && account.getBalance() > highest) {
                 highest = account.getBalance();
             }
         }
+        if (highest == Double.NEGATIVE_INFINITY) { return 0; }
         return highest;
     }
 
@@ -162,27 +164,42 @@ public class Finance {
         }
     }
 
-    
-    //  accessors 
+    // Adds up the balance of every non-null account.
+    // Precondition: accounts array is initialized.
+    // Postcondition: returns the sum of all balances, or 0 if there are none.
+    public double getTotalBalance() {
+        double total = 0;
+        for (Bank account : this.accounts) {
+            if (account != null) {
+                total += account.getBalance();
+            }
+        }
+        return total;
+    }
+
+
+    //  accessor to return the owner's name
     public String getOwnerName() {
         return this.ownerName;
     }
 
+    // accessor to return the accountCount
     public int getAccountCount() {
         return this.accountCount;
     }
 
+    //  accessor to return the monthlyGoals
     public double[] getMonthlyGoals() {
         return this.monthlyGoals;
     }
 
-    //  mutator 
+    //  mutator to change owner name
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;   // this.name = name style
     }
 
    
-     //Static method: belongs to the class
+    //Static because the count belongs to the whole class, not to any one portfolio.
     //Returns how many Finance portfolios have ever been created.
    
     public static int getPortfoliosCreated() {
