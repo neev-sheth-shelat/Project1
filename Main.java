@@ -62,6 +62,7 @@ public class Main{
                     password = password.substring(0, i) + "o" + password.substring(i + 1);
                 }
             }
+            System.out.println("Your generated password is: " + password + " (write it down, it will not be shown again)");
         }
 
         
@@ -139,7 +140,7 @@ public class Main{
         System.out.println("Does your account information look correct? (yes/no), anything else counts as no!");
         System.out.println("Account Holder Name: " + userBank.getAccountHolderName());
         System.out.println("Account Number: " + userBank.getAccountNumber());
-        System.out.println("Password: " + password);   
+        System.out.println("Password: ********");  //do not print password 
         System.out.println("Balance: " + userBank.getBalance());
         System.out.println("Monthly Income: " + userBank.getMonthlyIncome());
         System.out.println("Monthly Rent Expense: " + userBank.getMonthlyRentExpense());
@@ -334,7 +335,7 @@ public class Main{
         System.out.println("New Information:");
         System.out.println("Account Holder Name: " + userBank.getAccountHolderName());
         System.out.println("Account Number: " + userBank.getAccountNumber());
-        System.out.println("Password: " + password);  
+        System.out.println("Password: ********" );  //do not print password
         System.out.println("Balance: " + userBank.getBalance());
         System.out.println("Monthly Income: " + userBank.getMonthlyIncome());
         System.out.println("Monthly Rent Expense: " + userBank.getMonthlyRentExpense());
@@ -698,7 +699,7 @@ public class Main{
             System.out.println("New Information:");
             System.out.println("Account Holder Name: " + secondBank.getAccountHolderName());
             System.out.println("Account Number: " + secondBank.getAccountNumber());
-            System.out.println("Password: " + password);  
+            System.out.println("Password: ********" );  //do not print password
             System.out.println("Balance: " + secondBank.getBalance());
             System.out.println("Monthly Income: " + secondBank.getMonthlyIncome());
             System.out.println("Monthly Rent Expense: " + secondBank.getMonthlyRentExpense());
