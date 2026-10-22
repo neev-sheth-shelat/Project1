@@ -17,7 +17,7 @@
  Static: portfoliosCreated and MAX_ACCOUNTS are shared by every Finance object;
  average(double[]) only needs its array parameter.
  this: this.ownerName = ownerName; this(...) chaining; this.getAverageGoal() > other.getAverageGoal()
- Algorithms: max, count, average, sum.
+ Algorithms: max, findMax, count, average, sum.
  
  My plan: Use this program to create and manage 
  multiple bank accounts to stay on track with financial goals.
@@ -728,16 +728,33 @@ class Bank{
 // Wendy Wang
 // The set up and the services was easy to understand and use.
 // Very simple, just place the instriction closer to the input. Other then that very good. Place edge case in for digits.
+// Response: readAmount now prints each prompt right before it
+// reads the input, so the instruction sits directly at the input. For the edge-case note,
+// it only accepts digits with at most one decimal point, so letters, negative numbers,
+// and empty input are rejected and the program asks again.
 
 
 //Connor Doherty
 //make it clear that answers other than 'yes' or 'no' default to 'no'
 //catch exception of multiple periods in an input number being accepted
 //it looks like rent expense doesn't change after the user provides input
+// Response: All three are fixed.
+// 1) Multiple periods: readAmount and readMoney use a pattern that
+//    allows only one decimal point, so "1.2.3" is rejected and the program re-asks.
+// 2) Yes/no: the prompt now says "anything else counts as no!", and the check
+//    on only continues when the answer is "yes".
+// 3) Rent not changing: the value from askNewExpense is passed straight to the
+//    setter, and Bank's setters recalculate monthly savings. 
+
 
 
 
 /*Krish Sharma
    - I like the clean layout of the code and the use of methods to organize the different functionalities.
    - Ensure all user inputs are validated before processing
+    Response: I moved the repeated input code into methods: readAmount
+   for the starting numbers, askNewExpense for expense
+   changes, and readMoney for the remaining number prompts. Every number the user types
+   is now checked before it is used: letters, negatives, and multiple decimal points are
+   rejected. Yes/no questions treat anything other than "yes" as no.
 */
